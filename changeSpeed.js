@@ -13,6 +13,7 @@
     let speedStep  = 0.25; // 倍速的增量
     let initSpeed = 1.25; // 打开时默认的倍速
     let speed = initSpeed;
+    let initTitle = document.title;
 
     function changeSpeed(e) {
         if(e.keyCode == 219){ // [ 减速
@@ -23,6 +24,7 @@
         }
 
         videojs.getPlayers("video-player").html5player.tech_.setPlaybackRate(speed);
+        document.title = initTitle + "x"+ speed +"";
     }
 
     // 打开即自动initSpeed倍速
@@ -30,6 +32,7 @@
         if(videojs){
             videojs.getPlayers("video-player").html5player.tech_.setPlaybackRate(initSpeed);
             let speed = initSpeed;
+            document.title = initTitle + "x"+ speed +"";
             clearInterval(tId);
         }},2000);
 
